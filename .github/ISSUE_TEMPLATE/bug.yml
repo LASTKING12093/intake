@@ -1,0 +1,27 @@
+name: Bug report
+description: Report a reproducible problem.
+title: "[Bug] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: INTAKE and Windows versions
+      placeholder: INTAKE 2.0.1, Windows 11 x64
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source or platform
+      description: Do not include private or signed URLs.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Steps, expected behavior and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Sanitized diagnostics
+      description: Remove usernames, local paths, private links, tokens and personal filenames. Report security vulnerabilities privately.

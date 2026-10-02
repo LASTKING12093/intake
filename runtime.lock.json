@@ -1,0 +1,34 @@
+{
+  "artifacts": [
+    {
+      "name": "yt-dlp",
+      "version": "2026.08.19",
+      "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2026.08.19/yt-dlp.exe",
+      "sha256": "66674953fe251b89f4d08c5f0e35e0728679bd67ab3d7d05c0562af101dd3e7a",
+      "files": {
+        "yt-dlp.exe": "yt-dlp/yt-dlp.exe"
+      }
+    },
+    {
+      "name": "deno",
+      "version": "v2.9.7",
+      "url": "https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-pc-windows-msvc.zip",
+      "sha256": "a0c3101b4158d1dfb7d6a78a7bf0f3de80c96bb423c152beec8beb22786f2238",
+      "files": {
+        "deno.exe": "deno/deno.exe"
+      }
+    },
+    {
+      "name": "ffmpeg",
+      "version": "9.0.2",
+      "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-9.0.2-essentials_build.zip",
+      "sha256": "60f467265b1e312373dbcd92200c2618a74850f98d3d078e94296bb3fa2047ba",
+      "files": {
+        "ffmpeg-9.0.2-essentials_build/bin/ffmpeg.exe": "ffmpeg/ffmpeg.exe",
+        "ffmpeg-9.0.2-essentials_build/bin/ffprobe.exe": "ffmpeg/ffprobe.exe",
+        "ffmpeg-9.0.2-essentials_build/LICENSE": "ffmpeg/LICENSE",
+        "ffmpeg-9.0.2-essentials_build/README.txt": "ffmpeg/README.txt"
+      }
+    }
+  ]
+}

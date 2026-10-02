@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><path id="fold" d="M16 2C23.7 2 30 8.3 30 16C26 11.8 21.5 11.6 18.7 15.2C17.1 17.2 14.6 17.1 13.7 15.1C12.5 12.3 16 9.9 16 6.3Z"/></defs><g fill="#fff"><use href="#fold"/><use href="#fold" transform="rotate(120 16 16)"/><use href="#fold" transform="rotate(240 16 16)"/></g></svg>
