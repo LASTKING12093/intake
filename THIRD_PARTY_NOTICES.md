@@ -4,7 +4,7 @@ The MIT license covers original INTAKE code. It does not relicense bundled libra
 
 | Component | Version / license | Source and notices |
 | --- | --- | --- |
-| Python | 3.12.14 / PSF-2.0 | [CPython source](https://github.com/python/cpython/tree/v3.12.14); `runtime/licenses/Python-LICENSE.txt` |
+| Python | 3.12.14 / PSF-2.0 | [CPython source](https://github.com/python/cpython/tree/v3.12.14); `runtime/licenses/Python-LICENSE.txt` and `runtime/licenses/python/` |
 | PySide6 / Shiboken / Qt | 6.10.2 / LGPL-3.0, with upstream third-party licenses | [Qt for Python sources](https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.10.2-src/); [Qt source archives](https://download.qt.io/archive/qt/6.10/6.10.2/submodules/); license copies and third-party attributions under `runtime/licenses/qt/` |
 | FFmpeg / ffprobe | 9.0.2 Gyan essentials / GPL-3.0 | [Exact FFmpeg source revision](https://github.com/FFmpeg/FFmpeg/tree/946fcce07b); [upstream build and library details](https://www.gyan.dev/ffmpeg/builds/); `runtime/ffmpeg/LICENSE` and `README.txt` |
 | yt-dlp | 2026.08.19 / Unlicense for original code; executable contains separately licensed components | [Exact release source](https://github.com/yt-dlp/yt-dlp/tree/2026.08.19); `runtime/licenses/yt-dlp-UNLICENSE.txt` and `yt-dlp-THIRD-PARTY.txt` |

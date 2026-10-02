@@ -58,3 +58,5 @@ The provider README is authoritative for the exact revisions. Source projects fo
 | Fontconfig | https://gitlab.freedesktop.org/fontconfig/fontconfig |
 
 If a source link becomes unavailable, report the missing source access privately to the release maintainer through the repository's security reporting channel. Do not remove upstream license notices when redistributing modified packages.
+
+The pinned Windows Python distribution is from [python-build-standalone 20260929](https://github.com/astral-sh/python-build-standalone/tree/20260929), which records its build recipes and dependency sources. `scripts/get_build_python.ps1` identifies the exact binary archive and digest.

@@ -3,7 +3,7 @@
 ## Requirements
 
 - Windows x64; release verification uses Windows 11.
-- Python 3.12 or newer with `venv` and `pip` (release build: 3.12).
+- Python 3.12 or newer with `venv` and `pip` (release build: 3.12.14).
 - PowerShell, Git and an internet connection for pinned dependencies.
 - Inno Setup 7.1.0 to produce the installer. The helper below verifies its published digest before installation.
 
@@ -21,6 +21,7 @@ python -m venv .venv
 ## Tests
 
 ```powershell
+New-Item -ItemType Directory -Force .test-data | Out-Null
 .\.venv\Scripts\python.exe -m pytest -q --basetemp=.test-data/tests
 ```
 
@@ -37,8 +38,9 @@ This creates a fresh build environment, verifies runtime hashes, runs tests, bui
 ## Public release artifacts
 
 ```powershell
+.\scripts\get_build_python.ps1
 .\scripts\get_release_tools.ps1
-.\scripts\release.ps1 -Python python -Compiler .tools/inno/ISCC.exe
+.\scripts\release.ps1 -Python (Join-Path $PWD ".tools/python/python.exe") -Compiler .tools/inno/ISCC.exe
 ```
 
 Output in `release/`:
@@ -56,3 +58,5 @@ To make a **source-only** archive, use `git archive --format=zip --prefix=intake
 Pull requests and main-branch pushes run Windows tests and the packaged smoke test. Version tags build the installer and portable ZIP, test installation/uninstallation, and publish the assets with checksums. Workflows use the same scripts as a local build.
 
 Pinned inputs make the build repeatable, not byte-for-byte deterministic: PE timestamps, compression and host tooling can change output hashes. Release checksums describe the exact published artifacts. Before distribution, review dependency licenses and source-access references in `THIRD_PARTY_NOTICES.md`.
+
+The release Python helper downloads the SHA-256-verified CPython 3.12.14 Windows archive from Astral python-build-standalone release 20260929. This also covers security-maintenance Python versions absent from the setup-python Windows catalog. Its source/build recipes and dependency license texts are available at https://github.com/astral-sh/python-build-standalone/tree/20260929 and under `runtime/licenses/python/`.
