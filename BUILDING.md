@@ -4,7 +4,7 @@
 
 - Windows x64; release verification uses Windows 11.
 - Python 3.12 or newer with `venv` and `pip` (release build: 3.12.14).
-- PowerShell, Git and an internet connection for pinned dependencies.
+- PowerShell 7, Git and an internet connection for pinned dependencies.
 - Inno Setup 7.1.0 to produce the installer. The helper below verifies its published digest before installation.
 
 ## Development

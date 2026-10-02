@@ -11,6 +11,7 @@ The first public tree was prepared from the final application source, with a new
 - Byte and UTF-16 scans for the build host's profile, workspace and machine identifiers in the distribution; inspection of ZIP members and frozen Python code, including nested code objects and source filenames.
 - Clean demo screenshots inspected visually; PNG metadata checked. No existing personal history or desktop capture was reused.
 - Two scanner findings in upstream QtWebEngine development resources were excluded along with the unused development environments. Those resources are not shipped. Literal private-key parser markers in upstream libraries were distinguished from actual private-key material.
+- The unmodified official Deno executable contains its upstream GitHub runner's generic profile prefix. The audit records a narrowly scoped baseline for that prefix in that exact SHA-256-verified artifact. Other paths and changed artifacts still fail; no INTAKE developer-machine path is exempted.
 
 No known user credentials or personal build-machine information were found in the public source or release payload. This is a release-time review, not a guarantee against every future vulnerability.
 

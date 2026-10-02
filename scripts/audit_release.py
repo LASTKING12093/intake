@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 findings = []
 count = 0
 code_count = 0
+vendor_baselines = 0
 needles = set()
 for value in (str(ROOT), str(Path.home()), os.environ.get('USERPROFILE', ''), os.environ.get('AUDIT_PRIVATE_ROOT', '')):
     if len(value) > 5:
@@ -36,10 +37,21 @@ patterns = {
 }
 
 def scan(name, data):
-    global count
+    global count, vendor_baselines
     count += 1
     lower = data.lower()
-    if any(needle in lower for needle in needles):
+    matches = {needle for needle in needles if needle in lower}
+    # The unchanged official Deno binary contains its upstream GitHub runner's
+    # generic profile path. This is not a path from the INTAKE build machine.
+    # Match both the exact artifact digest and exact public runner prefix;
+    # modified files, other paths and our own executable receive no exemption.
+    if matches and name == 'dist/runtime/deno/deno.exe' and hashlib.sha256(data).hexdigest() == 'e020f3e232bd16e33768dee528e5983349c962952051ced0a5d58ad42f5d9b33':
+        upstream_profile = str(Path('c:/') / 'users' / 'runneradmin')
+        baseline = {upstream_profile.encode(encoding) for encoding in ('utf-8', 'utf-16-le')}
+        if matches & baseline:
+            vendor_baselines += 1
+            matches -= baseline
+    if matches:
         findings.append({'file': name, 'rule': 'private-build-context'})
     for rule, pattern in patterns.items():
         if pattern.search(data):
@@ -105,7 +117,7 @@ for path in (ROOT / 'release').glob('*'):
                     if hashlib.sha256(data).digest() != hashlib.sha256(expected[member].read_bytes()).digest():
                         findings.append({'file': member, 'rule': 'portable-content-mismatch'})
 report = {'checks': count, 'frozen_code_objects': code_count, 'findings': findings,
-          'source_files': len(list(filter(None, indexed)))}
+          'source_files': len(list(filter(None, indexed))), 'verified_upstream_baselines': vendor_baselines}
 target = ROOT / '.test-data/release-audit.json'
 target.parent.mkdir(parents=True, exist_ok=True)
 target.write_text(json.dumps(report, indent=2), 'utf-8')

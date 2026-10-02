@@ -47,9 +47,10 @@ try {
     $env:PATH = $originalBuildPath
 }
 Copy-Item -LiteralPath 'runtime' -Destination 'dist\INTAKE\runtime' -Recurse -Force
-Copy-Item -LiteralPath 'README.md', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'BUILDING.md', 'SECURITY.md', 'CHANGELOG.md' -Destination 'dist\INTAKE' -Force
+Copy-Item -LiteralPath 'README.md', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'BUILDING.md', 'SECURITY.md', 'CHANGELOG.md', 'CONTRIBUTING.md' -Destination 'dist\INTAKE' -Force
 New-Item -ItemType Directory -Path 'dist\INTAKE\docs' -Force | Out-Null
 Copy-Item -LiteralPath 'docs\DEPENDENCY_SOURCES.md' -Destination 'dist\INTAKE\docs' -Force
+Copy-Item -LiteralPath 'docs\assets' -Destination 'dist\INTAKE\docs' -Recurse -Force
 if (Test-Path -LiteralPath 'VALIDATION.md') { Copy-Item -LiteralPath 'VALIDATION.md' -Destination 'dist\INTAKE' -Force }
 foreach ($relative in @('INTAKE.exe', 'runtime\yt-dlp\yt-dlp.exe', 'runtime\ffmpeg\ffmpeg.exe', 'runtime\ffmpeg\ffprobe.exe', 'runtime\deno\deno.exe')) {
     if (-not (Test-Path -LiteralPath (Join-Path 'dist\INTAKE' $relative))) { throw "Missing distribution file: $relative" }
