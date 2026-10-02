@@ -15,5 +15,5 @@ $lines = foreach ($name in @('Intake-Setup-x64.exe','Intake-Portable-x64.zip')) 
     $digest = (Get-FileHash -LiteralPath (Join-Path 'release' $name) -Algorithm SHA256).Hash.ToLower()
     "$digest  $name"
 }
-Set-Content -LiteralPath 'release/SHA256SUMS.txt' -Value $lines -Encoding ascii
+[IO.File]::WriteAllText((Join-Path $root 'release/SHA256SUMS.txt'), ($lines -join "`n") + "`n", [Text.Encoding]::ASCII)
 Write-Output "INTAKE $version release artifacts are ready."
